@@ -24,7 +24,7 @@
        done < ${srcdir}/libcrypt.minver
      ;;
  
-+    *cygwin*)
++    *cygwin*|*mingw*)
 +      SYMVER_FLOOR="GLIBC_2.0"
 +    ;;
 +

@@ -1,15 +1,14 @@
 NAME="libxcrypt"
 VERSION=4.0.0
-RELEASE=0.1.20171108git
+RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Extended encryption library"
 DESCRIPTION="This packages provides a library which exports the functions
 crypt(3), encrypt(3), and setkey(3).  The created passwords are 56 bit DES
 encrypted and are 100% identical to those created by the Linux crypt(3)."
 HOMEPAGE="https://github.com/besser82/libxcrypt"
-commit0=50b82a0661e77e9b3b238660f98274bedf0d496e
-SRC_URI="${HOMEPAGE}/archive/${commit0}/libxcrypt-${commit0}.tar.gz"
-SRC_DIR="libxcrypt-${commit0}"
+SRC_URI="${HOMEPAGE}/archive/v${VERSION}/libxcrypt-v${VERSION}.tar.gz"
+SRC_DIR="libxcrypt-${VERSION}"
 PATCH_URI="4.0.0-cygwin-abi-compat.patch"
 
 PKG_NAMES="libcrypt0 libcrypt-devel"
