@@ -1,5 +1,5 @@
 NAME="libxcrypt"
-VERSION=4.0.0
+VERSION=4.0.1
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Extended encryption library"
@@ -9,7 +9,10 @@ encrypted and are 100% identical to those created by the Linux crypt(3)."
 HOMEPAGE="https://github.com/besser82/libxcrypt"
 SRC_URI="${HOMEPAGE}/archive/v${VERSION}/libxcrypt-v${VERSION}.tar.gz"
 SRC_DIR="libxcrypt-${VERSION}"
-PATCH_URI="4.0.0-cygwin-abi-compat.patch"
+PATCH_URI="
+	https://src.fedoraproject.org/cgit/rpms/libxcrypt.git/plain/libxcrypt-rh1592445.patch
+	4.0.0-cygwin-abi-compat.patch
+"
 
 PKG_NAMES="libcrypt0 libcrypt-devel"
 libcrypt0_CONTENTS="usr/bin/cygcrypt-0.dll usr/share/doc/"
