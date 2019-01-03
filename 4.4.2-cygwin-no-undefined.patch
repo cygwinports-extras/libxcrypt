@@ -11,7 +11,7 @@
  libcrypt_la_LDFLAGS += $(UNDEF_FLAG) $(TEXT_RELOC_FLAG) $(AM_LDFLAGS)
 --- origsrc/libxcrypt-4.4.2/libcrypt.def	1969-12-31 18:00:00.000000000 -0600
 +++ src/libxcrypt-4.4.2/libcrypt.def	2019-01-02 20:19:29.947265600 -0600
-@@ -0,0 +1,14 @@
+@@ -0,0 +1,10 @@
 +EXPORTS
 +    crypt = _crypt_crypt
 +    crypt_r = _crypt_crypt_r
@@ -22,7 +22,3 @@
 +    crypt_gensalt_rn = _crypt_crypt_gensalt_rn
 +    crypt_checksalt = _crypt_crypt_checksalt
 +    crypt_preferred_method = _crypt_crypt_preferred_method
-+    encrypt = _crypt_encrypt
-+    encrypt_r = _crypt_encrypt_r
-+    setkey = _crypt_setkey
-+    setkey_r = _crypt_setkey_r
