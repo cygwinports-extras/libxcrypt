@@ -1,0 +1,39 @@
+--- origsrc/libxcrypt-4.4.2/Makefile.am	2018-12-22 04:15:58.000000000 -0600
++++ src/libxcrypt-4.4.2/Makefile.am	2019-01-02 19:01:50.598632800 -0600
+@@ -77,7 +77,7 @@ uninstall-hook-pkgconfig:
+ 
+ # Build libcrypt.so.2 if obsolete APIs are excluded, libcrypt.so.1 otherwise.
+ if ENABLE_OBSOLETE_API
+-libcrypt_la_VERSION = 2:0:1
++libcrypt_la_VERSION = 2:0:2
+ else
+ libcrypt_la_VERSION = 2:0:0
+ endif
+--- origsrc/libxcrypt-4.4.2/configure.ac	2018-12-22 04:15:58.000000000 -0600
++++ src/libxcrypt-4.4.2/configure.ac	2019-01-02 19:05:08.099609300 -0600
+@@ -382,6 +382,10 @@ if test $enable_obsolete_api = 1; then
+       done < ${srcdir}/libcrypt.minver
+     ;;
+ 
++    *cygwin*|*mingw*)
++        SYMVER_FLOOR="GLIBC_2.0"
++    ;;
++
+     *gnu*)
+         # glibc exists for GNU Hurd, but it is unclear to me whether
+         # it has a stable ABI yet.  For now, we are assuming not.
+--- origsrc/libxcrypt-4.4.2/crypt-port.h	2018-12-22 04:15:58.000000000 -0600
++++ src/libxcrypt-4.4.2/crypt-port.h	2019-01-02 19:06:08.610351500 -0600
+@@ -177,8 +177,12 @@ _crypt_strcpy_or_abort (void *, const si
+ 
+ /* Set the symbol version for EXTNAME, which uses INTNAME as its
+    implementation.  */
++#ifdef __ELF__
+ #define symver_set(extstr, intname, version, mode) \
+   __asm__ (".symver " #intname "," extstr mode #version)
++#else
++#define symver_set(...) symver_nop()
++#endif
+ 
+ /* A construct with the same syntactic role as the expansion of symver_set,
+    but which does nothing.  */

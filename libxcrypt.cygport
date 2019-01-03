@@ -1,5 +1,5 @@
 NAME="libxcrypt"
-VERSION=4.0.1
+VERSION=4.4.2
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Extended encryption library"
@@ -10,17 +10,19 @@ HOMEPAGE="https://github.com/besser82/libxcrypt"
 SRC_URI="${HOMEPAGE}/archive/v${VERSION}/libxcrypt-v${VERSION}.tar.gz"
 SRC_DIR="libxcrypt-${VERSION}"
 PATCH_URI="
-	https://src.fedoraproject.org/cgit/rpms/libxcrypt.git/plain/libxcrypt-rh1592445.patch
-	4.0.0-cygwin-abi-compat.patch
+	4.4.2-cygwin-abi-compat.patch
+	4.4.2-cygwin-no-undefined.patch
+	4.4.2-cygwin-tests.patch
 "
 
 PKG_NAMES="libcrypt0 libcrypt-devel"
 libcrypt0_CONTENTS="usr/bin/cygcrypt-0.dll usr/share/doc/"
 libcrypt_devel_CONTENTS="usr/include/ usr/lib/ usr/share/man/man[35]/"
 
-src_install() {
-	cd ${B}
-	cyginstall
-
-	rm -f ${D}/usr/lib/libowcrypt.so*
-}
+CYGCONF_ARGS="
+	--enable-failure-tokens
+	--disable-xcrypt-compat-files
+	--enable-obsolete-api=glibc
+	--enable-hashes=glibc,owl,strong
+	--disable-symvers
+"
