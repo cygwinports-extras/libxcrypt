@@ -1,5 +1,5 @@
 NAME="libxcrypt"
-VERSION=4.4.2
+VERSION=4.4.4
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Extended encryption library"
@@ -15,8 +15,8 @@ PATCH_URI="
 	4.4.2-cygwin-tests.patch
 "
 
-PKG_NAMES="libcrypt0 libcrypt-devel"
-libcrypt0_CONTENTS="usr/bin/cygcrypt-0.dll usr/share/doc/"
+PKG_NAMES="libcrypt1 libcrypt-devel"
+libcrypt1_CONTENTS="usr/bin/cygcrypt-1.dll usr/share/doc/"
 libcrypt_devel_CONTENTS="usr/include/ usr/lib/ usr/share/man/man[35]/"
 
 CYGCONF_ARGS="
