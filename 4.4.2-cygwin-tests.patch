@@ -20,16 +20,3 @@
  static void
  segv_handler (int sig)
  {
---- origsrc/libxcrypt-4.4.4/test/symbols-compat.sh	2018-12-22 04:15:58.000000000 -0600
-+++ src/libxcrypt-4.4.4/test/symbols-compat.sh	2019-01-02 20:51:41.627929600 -0600
-@@ -47,8 +47,8 @@ int main(int argc, char **argv)
- }
- EOF
-         ${CC-cc} test.c -lcrypt >&2 || exit 77
--        if ldd ./a.out | grep -qF libcrypt.so.1; then
--            get_symbols_with_versions $(ldd ./a.out | grep -F libcrypt.so.1 |
-+        if ldd ./a.exe | grep -qF cygcrypt-1.dll; then
-+            get_symbols_with_versions $(ldd ./a.out | grep -F cygcrypt-1.dll |
-                                             cut -d' ' -f3)
-         else
-             exit 77

@@ -10,19 +10,20 @@ HOMEPAGE="https://github.com/besser82/libxcrypt"
 SRC_URI="${HOMEPAGE}/archive/v${VERSION}/libxcrypt-v${VERSION}.tar.gz"
 SRC_DIR="libxcrypt-${VERSION}"
 PATCH_URI="
-	4.4.2-cygwin-abi-compat.patch
+	4.4.2-cygwin-asm.patch
 	4.4.2-cygwin-no-undefined.patch
 	4.4.2-cygwin-tests.patch
 "
 
-PKG_NAMES="libcrypt1 libcrypt-devel"
-libcrypt1_CONTENTS="usr/bin/cygcrypt-1.dll usr/share/doc/"
+PKG_NAMES="libcrypt2 libcrypt-devel"
+libcrypt2_CONTENTS="usr/bin/cygcrypt-2.dll usr/share/doc/"
 libcrypt_devel_CONTENTS="usr/include/ usr/lib/ usr/share/man/man[35]/"
 
 CYGCONF_ARGS="
-	--enable-failure-tokens
+	--disable-failure-tokens
 	--disable-xcrypt-compat-files
-	--enable-obsolete-api=glibc
-	--enable-hashes=glibc,owl,strong
+	--disable-obsolete-api
+	--enable-hashes=all
 	--disable-symvers
+	PYTHON=/usr/bin/python3
 "

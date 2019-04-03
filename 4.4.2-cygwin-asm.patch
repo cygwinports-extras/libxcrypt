@@ -1,16 +1,3 @@
---- origsrc/libxcrypt-4.4.2/configure.ac	2018-12-22 04:15:58.000000000 -0600
-+++ src/libxcrypt-4.4.2/configure.ac	2019-01-02 19:05:08.099609300 -0600
-@@ -382,6 +382,10 @@ if test $enable_obsolete_api = 1; then
-       done < ${srcdir}/libcrypt.minver
-     ;;
- 
-+    *cygwin*|*mingw*)
-+        SYMVER_FLOOR="GLIBC_2.0"
-+    ;;
-+
-     *gnu*)
-         # glibc exists for GNU Hurd, but it is unclear to me whether
-         # it has a stable ABI yet.  For now, we are assuming not.
 --- origsrc/libxcrypt-4.4.4/lib/crypt-port.h	2018-12-22 04:15:58.000000000 -0600
 +++ src/libxcrypt-4.4.4/lib/crypt-port.h	2019-01-02 19:06:08.610351500 -0600
 @@ -177,8 +177,12 @@ _crypt_strcpy_or_abort (void *, const si
