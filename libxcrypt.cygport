@@ -3,9 +3,12 @@ VERSION=4.4.4
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Extended encryption library"
-DESCRIPTION="This packages provides a library which exports the functions
-crypt(3), encrypt(3), and setkey(3).  The created passwords are 56 bit DES
-encrypted and are 100% identical to those created by the Linux crypt(3)."
+DESCRIPTION="libxcrypt is a modern library for one-way hashing of passwords.
+It supports a wide variety of both modern and historical hashing methods:
+yescrypt, gost-yescrypt, scrypt, bcrypt, sha512crypt, sha256crypt, md5crypt,
+SunMD5, sha1crypt, NT, bsdicrypt, bigcrypt, and descrypt. It provides the
+traditional Unix crypt and crypt_r interfaces, as well as a set of extended
+interfaces."
 HOMEPAGE="https://github.com/besser82/libxcrypt"
 SRC_URI="${HOMEPAGE}/archive/v${VERSION}/libxcrypt-v${VERSION}.tar.gz"
 SRC_DIR="libxcrypt-${VERSION}"
